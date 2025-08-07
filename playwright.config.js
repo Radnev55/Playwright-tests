@@ -11,9 +11,10 @@ const config = defineConfig({
     timeout: 5000
   },
   reporter: 'html',
+
   use: {
-    browserName: 'chromium',       // 👈 препоръчително за CI
-    headless: true,                // 👈 важно за GitHub Actions
+    browserName: 'chromium',       // 👈 За CI среда
+    headless: true,                // 👈 Задължително за GitHub Actions
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
