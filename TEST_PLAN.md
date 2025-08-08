@@ -45,17 +45,21 @@ Static test data stored in test-data/ folder
 Configurable environment variables for sensitive data (e.g., credentials)
 
 7. Folder Structure
+ tests/
+└── smoke/
+    ├── login.valid.spec.js
+    ├── login.invalid.spec.js
+    ├── cart.add.spec.js
+    ├── cart.remove.spec.js
+    ├── checkout.complete.spec.js
+    └── logout.spec.js
 
-tests/
- ├── smoke/
- │    ├── login.spec.js
- │    ├── homepage.spec.js
  ├── regression/
  │    ├── checkout.spec.js
  │    ├── search.spec.js
  ├── performance/
  │    ├── pageload.spec.js
- 
+
 8. Execution Commands
 Run all tests:
 

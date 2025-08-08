@@ -1,25 +1,16 @@
 // @ts-check
 import { defineConfig } from '@playwright/test';
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
-const config = defineConfig({
+export default defineConfig({
   testDir: './tests',
   timeout: 30 * 1000,
-  expect: {
-    timeout: 5000
-  },
+  expect: { timeout: 5000 },
   reporter: 'html',
-
   use: {
-    baseURL: 'https://rahulshettyacademy.com/angularpractice/',
-    browserName: 'chromium',       // 👈 За CI среда
-    headless: true,                // 👈 Задължително за GitHub Actions
+    baseURL: 'https://www.saucedemo.com',
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'retain-on-failure',
+    trace: 'retain-on-failure'
   }
 });
-
-export default config;
