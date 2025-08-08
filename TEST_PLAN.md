@@ -45,9 +45,7 @@ Static test data stored in test-data/ folder
 Configurable environment variables for sensitive data (e.g., credentials)
 
 7. Folder Structure
-pgsql
-Копиране
-Редактиране
+
 tests/
  ├── smoke/
  │    ├── login.spec.js
@@ -57,34 +55,25 @@ tests/
  │    ├── search.spec.js
  ├── performance/
  │    ├── pageload.spec.js
+ 
 8. Execution Commands
 Run all tests:
 
-bash
-Копиране
-Редактиране
 npx playwright test
 Run only smoke tests:
 
-bash
-Копиране
-Редактиране
 npx playwright test tests/smoke
 Run only regression tests:
 
-bash
-Копиране
-Редактиране
 npx playwright test tests/regression
+
 9. Reporting
 HTML report is generated automatically after test execution.
 
 To view:
 
-bash
-Копиране
-Редактиране
 npx playwright show-report
+
 10. CI/CD Integration
 Tests run automatically on each push or pull request to the main branch.
 
