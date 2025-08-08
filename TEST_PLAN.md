@@ -1,84 +1,136 @@
-Test Plan – Playwright E2E Automation Project
-1. Project Overview
-This project contains automated End-to-End (E2E) tests using Playwright for testing a web application.
-The goal is to ensure key functionalities work as expected and to enable quick regression checks during development.
+# Test Plan for SauceDemo Automation Testing
 
-2. Scope
-In Scope:
+## Overview
+This test plan outlines the approach for automated testing of the **SauceDemo** application using **Playwright** in JavaScript. The purpose of this test plan is to ensure the quality, performance, and reliability of the web application through comprehensive testing strategies.
 
-UI testing
+- **Project Name**: SauceDemo Automation Testing
+- **Test Framework**: Playwright (JavaScript)
+- **Environment**: SauceDemo website (https://www.saucedemo.com)
 
-Functional testing
+## Types of Testing
+The following types of testing will be performed:
 
-Smoke and regression test suites
+- **Smoke Testing**: Verify the basic functionalities after each deployment.
+- **Regression Testing**: Ensure that new changes do not break existing functionality.
+- **Performance Testing**: Evaluate the performance of the application under different conditions.
+- **End-to-End Testing (E2E)**: Simulate real-user workflows to ensure everything works correctly.
+- **Exploratory Testing**: Manually test edge cases and unexpected user behaviors.
+- **Usability Testing**: Check the user interface and user experience.
 
-Cross-browser validation (Chromium, Firefox, WebKit)
+## Test Strategy
 
-Out of Scope:
+### Smoke Testing
+**Objective**: Ensure critical functionality works after a deployment.
 
-Performance testing (covered separately)
+#### Test Scenarios:
+- **Valid Login**: Ensure users can log in with valid credentials.
+- **Invalid Login**: Ensure users see an error message with invalid credentials.
+- **Add to Cart**: Verify that users can add products to the cart.
+- **Remove from Cart**: Verify that users can remove products from the cart.
+- **Logout**: Verify that users can log out successfully and are redirected to the login page.
 
-Manual exploratory testing
+---
 
-3. Test Types
-Smoke Tests – Quick validation that the application is up and running (e.g., login, homepage load)
+### Regression Testing
+**Objective**: Ensure that new changes do not break existing functionality.
 
-Regression Tests – Full set of critical workflows to catch unexpected bugs after changes
+#### Test Scenarios:
+- **Login (Valid/Invalid)**: Re-test login functionality.
+- **Cart Operations**: Ensure the cart behaves as expected (add, remove, update items).
+- **Checkout Process**: Test that users can proceed through the checkout process without issues.
+- **Sorting**: Verify sorting by name and price works properly.
+- **Responsive Design**: Test the app on mobile, tablet, and desktop devices.
+- **Logout**: Verify the logout functionality.
 
-Performance Tests – Basic page load and rendering checks
+---
 
-4. Test Environments
-Local: Developer machine using Playwright CLI
+### Performance Testing
+**Objective**: Evaluate the app’s performance under different conditions.
 
-CI/CD: GitHub Actions (Ubuntu latest)
+#### Test Scenarios:
+- **Page Load Time**: Measure the load time of home, product, and cart pages.
+- **Concurrent Users**: Simulate multiple users adding items to the cart and completing checkout.
+- **API Latency**: Measure the API response time for login, cart operations, and checkout.
+- **Stress Testing**: Test how the application handles high traffic or requests.
 
-5. Tools & Frameworks
-Playwright for test automation
+---
 
-Node.js for execution environment
+### End-to-End Testing (E2E)
+**Objective**: Ensure the full user flow from login to checkout works correctly.
 
-GitHub Actions for CI/CD
+#### Test Scenarios:
+- **Valid Login → Add to Cart → Checkout**: Simulate a user journey from login to purchasing products.
+- **Invalid Login → Error Handling**: Ensure the application correctly handles failed logins.
+- **Remove Item from Cart → Checkout**: Test the flow where a user removes items and still completes checkout.
+- **Product Sorting**: Verify the sorting options (price, name) work correctly.
+- **Responsive Design**: Test the full flow on different screen sizes.
 
-6. Test Data
-Static test data stored in test-data/ folder
+---
 
-Configurable environment variables for sensitive data (e.g., credentials)
+### Exploratory Testing
+**Objective**: Manually test for unexpected behaviors and edge cases.
 
-7. Folder Structure
- tests/
-└── smoke/
-    ├── login.valid.spec.js
-    ├── login.invalid.spec.js
-    ├── cart.add.spec.js
-    ├── cart.remove.spec.js
-    ├── checkout.complete.spec.js
-    └── logout.spec.js
+#### Test Scenarios:
+- **Edge Cases**: Test unusual input cases (e.g., long product names, special characters in the username).
+- **Broken Links**: Ensure all links are functional and lead to the correct pages.
+- **Session Timeout**: Verify how the app behaves when a user session expires.
+- **UI Behavior**: Test UI components for correctness and responsiveness across browsers.
 
- ├── regression/
- │    ├── checkout.spec.js
- │    ├── search.spec.js
- ├── performance/
- │    ├── pageload.spec.js
+---
 
-8. Execution Commands
-Run all tests:
+### Usability Testing
+**Objective**: Ensure the app is user-friendly and accessible.
 
-npx playwright test
-Run only smoke tests:
+#### Test Scenarios:
+- **Navigation**: Verify that users can easily navigate between pages and categories.
+- **Visual Design**: Ensure consistency in design and layout (buttons, colors, fonts).
+- **Accessibility**: Check for accessibility issues such as missing ARIA labels and poor color contrast.
+- **Error Messages**: Validate that error messages are clear and helpful.
 
-npx playwright test tests/smoke
-Run only regression tests:
+---
 
-npx playwright test tests/regression
+## Test Execution Strategy
 
-9. Reporting
-HTML report is generated automatically after test execution.
+- **Test Environment**: Tests will be run on the **Chrome**, **Firefox**, and **Edge** browsers, as well as on mobile and desktop devices.
+- **Automation**: Playwright will be used to automate all tests. GitHub Actions will be set up for CI/CD to run tests on each commit.
+- **Parallel Execution**: Tests will be executed in parallel to speed up execution times.
+- **Test Reporting**: **Allure** or **Jest** will be used to generate detailed test reports.
 
-To view:
+---
 
-npx playwright show-report
+## Risk and Mitigation Plan
 
-10. CI/CD Integration
-Tests run automatically on each push or pull request to the main branch.
+- **Flaky Tests**: Some tests may fail intermittently due to network instability or timing issues.
+  - **Mitigation**: Use retries or stabilize actions (e.g., waiting for elements to be visible before interacting).
+  
+- **Performance Degradation**: The application might degrade under heavy load.
+  - **Mitigation**: Conduct performance testing regularly and optimize the app for high traffic.
+  
+- **Maintenance Overhead**: Tests might need to be updated frequently due to UI changes.
+  - **Mitigation**: Keep tests modular, simple, and easy to update. Implement a clear test structure.
 
-GitHub Actions workflow is stored in .github/workflows/playwright.yml.
+---
+
+## Test Deliverables
+
+- **Test Plan Document**: This document will serve as the official guide for all testing activities.
+- **Test Case Descriptions**: Detailed test cases will be documented.
+- **Execution Logs**: Logs of each test run with pass/fail status.
+- **Test Reports**: Summary reports showing the status of test execution.
+
+---
+
+## Conclusion
+
+This test plan ensures that all major functionalities of the **SauceDemo** application are properly tested. By following this plan, we can achieve high confidence in the reliability, performance, and usability of the site.
+
+---
+
+## Next Steps
+
+- **Setup CI/CD**: Integrate tests with GitHub Actions for automatic test execution on every commit.
+- **Organize Test Suites**: Organize Playwright tests into logical folders (e.g., `smoke`, `regression`, `e2e`).
+- **Track Results**: Monitor test results and ensure proper issue tracking and reporting.
+
+---
+
