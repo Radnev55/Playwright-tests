@@ -2,7 +2,7 @@ const {test, expect} = require('@playwright/test');
 
 test('Add Blackberry to cart and verify', async ({page}) => {
 
-await page.goto('https://rahulshettyacademy.com/angularpractice/');
+await page.goto('/angularpractice/');
 
 await page.click('a[href*="shop"]');
 await expect(page).toHaveURL(/.*shop/);

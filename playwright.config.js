@@ -13,6 +13,7 @@ const config = defineConfig({
   reporter: 'html',
 
   use: {
+    baseURL: 'https://rahulshettyacademy.com/angularpractice/',
     browserName: 'chromium',       // 👈 За CI среда
     headless: true,                // 👈 Задължително за GitHub Actions
     screenshot: 'only-on-failure',

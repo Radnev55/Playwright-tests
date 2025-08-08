@@ -1,7 +1,7 @@
 const { test, expect} = require('@playwright/test');
 
 test('Fill form and check two-way data binding', async ({page}) => {
-    await page.goto('https://rahulshettyacademy.com/angularpractice/');
+    await page.goto('/angularpractice/');
 
     const nameInput = page.locator('form input[name="name"]');
     await nameInput.fill('Marto Test');

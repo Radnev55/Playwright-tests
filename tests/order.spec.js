@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('Complete order and verify success message', async ({ page }) => {
   // Отиваме на сайта
-  await page.goto('https://rahulshettyacademy.com/angularpractice/');
+  await page.goto('/angularpractice/');
 
   // Отиваме в секцията Shop
   await page.locator('text=Shop').click();
@@ -15,7 +15,7 @@ test('Complete order and verify success message', async ({ page }) => {
 
   // Отиваме на количката (Checkout)
   await page.locator('a.nav-link.btn.btn-primary').click();
-
+ 
   // Натискаме бутона Checkout
   await page.locator('text=Checkout').click();
 
